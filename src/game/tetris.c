@@ -809,7 +809,7 @@ int startgame_1p()
 		return 0;
 	tetr_stats[i] = 1;
 	upd_stat(&player1, 0);
-	while (nextpiece(&next)) {
+	while (nextpiecebag(&next,&player1)) {
 		spawn_discard_drops(0);
 		t = gettm(0);
 		show_dropmarker(&player1);
