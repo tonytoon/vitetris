@@ -53,11 +53,6 @@ void gettetrom(struct tetr *t, int i)
 	t->color = tetrom_colors[i];
 }
 
-void gettetrombag(struct tetr *t, int i)
-{
-	;	
-}
-
 int hitbtm(struct tetr *p, struct player *plr)
 {
 	uint_least32_t *board;
@@ -769,6 +764,11 @@ static int nextpiece(struct tetr *next)
 	tetr_stats[i]++;
 	drawnext(&player1, next);
 	return movedown(&player1, 0) && movedown(&player1, 0);
+}
+
+static int nextpiecebag(struct tetr *next)
+{
+	;
 }
 
 int startgame_1p()
