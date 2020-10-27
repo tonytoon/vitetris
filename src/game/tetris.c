@@ -53,6 +53,11 @@ void gettetrom(struct tetr *t, int i)
 	t->color = tetrom_colors[i];
 }
 
+void gettetrombag(struct tetr *t, int i)
+{
+	;	
+}
+
 int hitbtm(struct tetr *p, struct player *plr)
 {
 	uint_least32_t *board;
