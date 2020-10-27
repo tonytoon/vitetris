@@ -767,7 +767,7 @@ static int nextpiece(struct tetr *next)
 	return movedown(&player1, 0) && movedown(&player1, 0);
 }
 
-static int nextpiecebag(struct tetr *next, struct player *p)
+static int nextpiecebag(struct tetr *next)
 {
 	if (p->bagnext > 7)
 	{
