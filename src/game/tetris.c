@@ -769,12 +769,15 @@ static int nextpiece(struct tetr *next)
 
 static int nextpiecebag(struct tetr *next, struct player *p)
 {
-	if (p->bagnext > 7)
+	if (p->bagnext > 7) {
 		fillbag(p->bag);
+		p->bagnext = 0;
+	}
 	player1.piece = *next;
 	gettetrom(next, p->bag[bagnext]);
 	tetr_stats[p->bag[bagnext]]++;
 	drawnext(&player1, next);
+	p->bagnext++;
 	return movedown(&player1, 0) && movedown(&player1, 0);
 }
 
