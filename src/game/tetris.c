@@ -774,10 +774,10 @@ static int nextpiecebag(struct tetr *next)
 		fillbag(p->bag);
 	}
 	player1.piece = *next;
-	gettetrom(next, p->bag[p->bagnext]);
-	tetr_stats[p->bag[p->bagnext]]++;
+	gettetrom(next, player1.bag[player1.bagnext]);
+	tetr_stats[player1.bag[player1.bagnext]]++;
 	drawnext(&player1, next);
-	p->bagnext++;
+	player1.bagnext++;
 	return movedown(&player1, 0) && movedown(&player1, 0);
 }
 
