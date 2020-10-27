@@ -754,6 +754,7 @@ void setupplayer(struct player *p)
 	while (p->level < p->startlevel)
 		levelup(p);
 	p->lines = (game->mode & MODE_BTYPE) ? p->lineslimit : 0;
+	fillbag(p->bag);
 }
 
 static int nextpiece(struct tetr *next)
@@ -766,9 +767,29 @@ static int nextpiece(struct tetr *next)
 	return movedown(&player1, 0) && movedown(&player1, 0);
 }
 
-static int nextpiecebag(struct tetr *next)
+static int nextpiecebag(struct tetr *next, struct player *p)
 {
-	;
+	if (p->bagnext > 7)
+		fillbag(p->bag);
+	player1.piece = *next;
+	gettetrom(next, p->bag[bagnext]);
+	tetr_stats[p->bag[bagnext]]++;
+	drawnext(&player1, next);
+	return movedown(&player1, 0) && movedown(&player1, 0);
+}
+
+void fillbag(int *bag)
+{
+	for (int i = 0; i < 7; i++)
+		bag[i] = i;
+	
+	for (int i = 0; i < 7; i++) 
+        {
+        	int j = i + rand() / (RAND_MAX / (6) + 1);
+        	int t = bag[j];
+        	bag[j] = bag[i];
+        	bag[i] = t;
+	}
 }
 
 int startgame_1p()
