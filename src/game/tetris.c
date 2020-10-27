@@ -769,9 +769,9 @@ static int nextpiece(struct tetr *next)
 
 static int nextpiecebag(struct tetr *next, struct player *p)
 {
-	if (p->bagnext > 7) {
+	if (p->bagnext > 7)
+	{
 		fillbag(p->bag);
-		p->bagnext = 0;
 	}
 	player1.piece = *next;
 	gettetrom(next, p->bag[bagnext]);
@@ -781,17 +781,18 @@ static int nextpiecebag(struct tetr *next, struct player *p)
 	return movedown(&player1, 0) && movedown(&player1, 0);
 }
 
-void fillbag(int *bag)
+void fillbag(struct player *p)
 {
+	p->bagnext = 0;
 	for (int i = 0; i < 7; i++)
-		bag[i] = i;
+		p->bag[i] = i;
 	
 	for (int i = 0; i < 7; i++) 
         {
         	int j = i + rand() / (RAND_MAX / (6) + 1);
-        	int t = bag[j];
-        	bag[j] = bag[i];
-        	bag[i] = t;
+        	int t = p->bag[j];
+        	p->bag[j] = p->bag[i];
+        	p->bag[i] = t;
 	}
 }
 
