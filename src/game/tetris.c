@@ -769,9 +769,9 @@ static int nextpiece(struct tetr *next)
 
 static int nextpiecebag(struct tetr *next)
 {
-	if (p->bagnext > 7)
+	if (player1.bagnext > 7)
 	{
-		fillbag(p->bag);
+		fillbag(player1.bag);
 	}
 	player1.piece = *next;
 	gettetrom(next, player1.bag[player1.bagnext]);
